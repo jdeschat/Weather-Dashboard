@@ -46,6 +46,14 @@ presetCityButtons.addEventListener("click", function (e) {
 });
 
 // TODO: Create a container that contains the city, date, temp, wind, humidity and UV index
+var jsonData;
 
+$(document).ready(function () {
+    $.getJSON('https://api.openweathermap.org/data/2.5/forecast?q=&appid=908d66bc443a59edcf38648405a06695', function (data) {
+        jsonData = data;
+        $('.cityDate').text(jsonData.name);
+        // etc
+    });
+});
 
 // TODO: Create a container with a 5-day forecast
