@@ -24,11 +24,11 @@ searchButton.addEventListener("click", function () {
 // TODO: get the preset buttons to return weather information
 var presetCityButtons = document.querySelector(".cityNames");
 presetCityButtons.addEventListener("click", function (e) {
-
-    let cityName = e.target.innerText;
+    let cityName = $("#cityInput").val();
+    let cityNames = e.target.innerText;
     // console.log(cityName);
     let weatherAPI = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=908d66bc443a59edcf38648405a06695";
-    fetch(weatherAPI)
+    fetch(cityNames)
         .then(function (response) {
             return response.json();
         })
@@ -49,7 +49,8 @@ presetCityButtons.addEventListener("click", function (e) {
 var jsonData;
 
 $(document).ready(function () {
-    $.getJSON('https://api.openweathermap.org/data/2.5/forecast?q=&appid=908d66bc443a59edcf38648405a06695', function (data) {
+    let weatherAPI = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=908d66bc443a59edcf38648405a06695";
+    $.getJSON(weatherAPI, function (data) {
         jsonData = data;
         $('.cityDate').text(jsonData.name);
         // etc
