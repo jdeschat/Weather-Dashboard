@@ -1,0 +1,11 @@
+* {
+    margin: 10px;
+    padding: 5px;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(#4169e1, #8641E1);
+}
+
