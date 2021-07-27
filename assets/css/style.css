@@ -9,7 +9,53 @@ header {
     background: linear-gradient(#4169e1, #8641E1);
 }
 
-#presetCities {
+/* .row {
+    white-space: pre-wrap;
+} */
+
+.sidesearch {
     display: flex;
-    align-content: column;
+    flex-direction: column;
+    /* doesnt work */
+    width: 300px;
 }
+
+#searchBtn {
+    width: 300px;
+    background-color: royalblue;
+    color: white;
+    /* border-bottom: 2px solid grey; */
+}
+
+#searchTitle {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+#cityInput {
+    width: 300px;
+}
+
+.cityNames {
+    width: 300px;
+}
+
+.weatherbox {
+    border: 2px solid black;
+    line-height: 40px;
+}
+
+.fiveDayForecast {
+    display: flex;
+    flex-direction: row;
+}
+
+/* .sidebar, #presetCities {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+} */
+
+/* .weatherbox {
+    
+} */
