@@ -59,13 +59,15 @@ var getCityInfo = function (lat, lon) {
 
 // TODO: Create a container with a 5-day forecast
 var fiveDayForecast = function (data) {
+    $('.fiveDayForecast').empty();
     for (let i = 0; i < 5; i++) {
+        var day = $("<div class='day'><div/>")
         console.log(fiveDayForecast);
-        $('.fiveDayForecast').append(fiveDayForecast[i]);
-        $('.dailyForecast').append("Temp: " + data.daily[i].temp + " K");
-        $('.dailyForecast').append("Wind: " + data.daily[i].wind_speed + "MPH");
-        $('.dailyForecast').append("Humidity: " + data.daily[i].humidity + " %");
-        fiveDayForecast = "";
+        // $('.fiveDayForecast').append(fiveDayForecast[i]);
+        $(day).append("<p>Temp: " + data.daily[i].temp.day + " K</p>");
+        $(day).append("<p>Wind: " + data.daily[i].wind_speed + "MPH</p>");
+        $(day).append("<p>Humidity: " + data.daily[i].humidity + " %</p>");
+        $('.fiveDayForecast').append(day)
 
     };
 }

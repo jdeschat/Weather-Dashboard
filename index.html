@@ -16,17 +16,18 @@
         <h1>Weather Dashboard</h1>
     </header>
 
-    <div class="container">
-        <div class="row sidesearch">
+
+    <div class="row">
+        <div class="sidesearch col-md-3">
             <!-- Search for a City sidebar -->
-            <div id="response-container col-md-2">
-                <label id="searchTitle" for="cityInput">Search for a City:</label><br>
+            <div id="response-container">
+                <label id="searchTitle" for="cityInput">Search for a City:</label>
                 <input type="text" placeholder="Niagara Falls" id="cityInput" name="cityInput"><br>
                 <button id="searchBtn">Search</button>
-
             </div>
+
             <!-- Add preset city names -->
-            <div class="col-md-2" id="presetCities">
+            <div id="presetCities">
                 <button class="cityNames">Niagara Falls</button><br>
                 <button class="cityNames">Niagara-on-the-Lake</button><br>
                 <button class="cityNames">Fonthill</button><br>
@@ -34,33 +35,26 @@
                 <button class="cityNames">Toronto</button>
             </div>
         </div>
+
+
         <!-- City temp, wind, humidity, and UV index -->
-        <div class="row weatherbox">
-            <div class="col-md-6">
-                <strong class="cityDate">{CITY HERE} {MM/DD/YYYY}</strong>
-                <br>
-                <span class="temperature">{X}°C</span>
-                <br>
-                <span class="wind">{WIND VALUE} MPH</span>
-                <br>
-                <span class="humidity">{HUMIDITY VALUE} %</span>
-                <br>
-                <span class="uvIndex">{UV INDEX VALUE}</span>
-            </div>
+        <div class="weatherbox col-md-8">
+            <strong class="cityDate">{CITY HERE} {MM/DD/YYYY}</strong>
+            <br>
+            <span class="temperature">{X}°C</span>
+            <br>
+            <span class="wind">{WIND VALUE} MPH</span>
+            <br>
+            <span class="humidity">{HUMIDITY VALUE} %</span>
+            <br>
+            <span class="uvIndex">{UV INDEX VALUE}</span>
         </div>
 
         <!-- 5-Day Forecast -->
-        <div class="col-md-8">
-            <h2>5-Day Forecast:</h2> <br>
-            <div class="fiveDayForecast">
-                <div class="dailyForecast"></div>
-                <div class="dailyForecast"></div>
-                <div class="dailyForecast"></div>
-                <div class="dailyForecast"></div>
-                <div class="dailyForecast"></div>
-            </div>
+        <div class="col-md-8 forecast">
+            <h2>5-Day Forecast:</h2>
+            <div class="fiveDayForecast"></div>
         </div>
-
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

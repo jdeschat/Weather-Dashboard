@@ -13,12 +13,12 @@ header {
     white-space: pre-wrap;
 } */
 
-.sidesearch {
+/* .sidesearch {
     display: flex;
     flex-direction: column;
     /* doesnt work */
-    width: 300px;
-}
+    /* width: 300px;
+} */
 
 #searchBtn {
     width: 300px;
@@ -45,9 +45,19 @@ header {
     line-height: 40px;
 }
 
+.forecast {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .fiveDayForecast {
     display: flex;
     flex-direction: row;
+}
+
+.day {
+    background-color: rgb(54, 54, 92);
+    color: white;
 }
 
 /* .sidebar, #presetCities {
