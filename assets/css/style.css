@@ -5,21 +5,33 @@ header {
     padding: 15px;
 }
 
+#cityInput {
+    width: 300px;
+    height: 50px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
 #searchBtn {
     width: 300px;
     background-color: royalblue;
     color: white;
-    /* border-bottom: 2px solid grey; */
+    margin-top: 15px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.lineBreak {
+    border-bottom: 2px solid grey;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 300px;
 }
 
 #searchTitle {
     font-size: 2em;
     font-weight: bold;
     padding: 10px;
-}
-
-#cityInput {
-    width: 300px;
 }
 
 .cityNames {
@@ -37,7 +49,7 @@ header {
 
 .card {
     width: 100%;
-    padding: 15px;
+    padding: 10px;
 }
 
 .info {

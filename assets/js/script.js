@@ -53,7 +53,7 @@ let toDateTime = function (time) {
 
 // TODO: Create a container that contains the city, date, temp, wind, humidity and UV index
 var getCityInfo = function (lat, lon) {
-    let uvApi = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&appid=908d66bc443a59edcf38648405a06695'
+    let uvApi = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&appid=908d66bc443a59edcf38648405a06695' + '&units=metric'
     fetch(uvApi)
         .then(function (response) {
             return response.json();
@@ -64,7 +64,7 @@ var getCityInfo = function (lat, lon) {
             $('.temperature').text("Temp: " + data.current.temp + " K");
             $('.wind').text("Wind: " + data.current.wind_speed + "MPH");
             $('.humidity').text("Humidity: " + data.current.humidity + " %");
-            $('.uvIndex').text("UV Index: " + data.current.uvi);
+            $('.uvIndex').html("UV Index: " + `<button class="btn btn-success" id="uvBtn">${data.current.uvi}</button>`);
             fiveDayForecast(data);
         });
 };
@@ -72,18 +72,11 @@ var getCityInfo = function (lat, lon) {
 // TODO: Create a container with a 5-day forecast
 var fiveDayForecast = function (data) {
     $('.fiveDayForecast').empty();
-    for (let i = 0; i < 5; i++) {
+    for (let i = 1; i < 6; i++) {
         var day = $("<div class='day'><div />")
         console.log(fiveDayForecast);
-
-        // var myDate = new Date(response.list[i * 8].dt * 1000);
-        // newCard.append($("<h4>").html(myDate.toLocaleDateString()));
-        // var iconCode = response.list[i * 8].weather[0].icon;
-        // var iconURL = "http://openweathermap.org/img/w/" + iconCode + ".png";
-        // newCard.append($("<img>").attr("src", iconURL));
-
-
-        // converts K and removes decimals using Math.round
+        $(day).append(toDateTime(data.daily[i].dt));
+        $(day).append(`<img src="https://openweathermap.org/img/w/${data.daily[i].weather[0].icon}.png"/>`);
         $(day).append("<p>Temp: " + data.daily[i].temp.day + " K</p>");
         $(day).append("<p>Wind: " + data.daily[i].wind_speed + "MPH</p>");
         $(day).append("<p>Humidity: " + data.daily[i].humidity + " %</p>");
