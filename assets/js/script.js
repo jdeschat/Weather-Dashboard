@@ -40,6 +40,17 @@ presetCityButtons.forEach(function (btn) {
     });
 });
 
+// Create a function to get the date
+let toDateTime = function (time) {
+    let someDate = new Date();
+    someDate.setTime(time * 1000);
+    let dd = someDate.getDate();
+    let mm = someDate.getMonth() + 1;
+    let y = someDate.getFullYear();
+    return mm + '/' + dd + '/' + y;
+}
+// toDateTime(1627725936);
+
 // TODO: Create a container that contains the city, date, temp, wind, humidity and UV index
 var getCityInfo = function (lat, lon) {
     let uvApi = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&appid=908d66bc443a59edcf38648405a06695'
@@ -49,7 +60,7 @@ var getCityInfo = function (lat, lon) {
         }).then(function (data) {
             console.log(data);
             // Add the date using moment.js
-            $('.cityDate').text(cityName); // in the city variable
+            $('.cityDate').text(cityName + " (" + toDateTime(data.current.dt) + ")"); // in the city variable
             $('.temperature').text("Temp: " + data.current.temp + " K");
             $('.wind').text("Wind: " + data.current.wind_speed + "MPH");
             $('.humidity').text("Humidity: " + data.current.humidity + " %");
@@ -83,55 +94,4 @@ var fiveDayForecast = function (data) {
 
 
 
-
-
-
-
-
 // save to local storage
-function getItems() {
-    var storedCities = JSON.parse(localStorage.getItem("saveHistory"));
-    if (storedCities !== null) {
-        saveHistory = storedCities;
-    };
-    // lists up to 10 locations
-    for (i = 0; i < saveHistory.length; i++) {
-        if (i == 10) {
-            break;
-        }
-        //  creates links/buttons
-        cityListButton = $("<a>").attr({
-            class: "list-group-item list-group-item-action",
-            href: "#"
-        });
-        // appends history as a button below the search field
-        cityListButton.text(saveHistory[i]);
-        $(".list-group").append(cityListButton);
-    }
-};
-
-// searches and adds to history(event)
-$("#searchCity").click(function () {
-    cityName = $("#city").val().trim();
-    getData();
-    var checkArray = saveHistory.includes(city);
-    if (checkArray == true) {
-        return
-    }
-    else {
-        saveHistory.push(cityName);
-        localStorage.setItem("saveHistory", JSON.stringify(saveHistory));
-        var cityListButton = $("<a>").attr({
-            // list-group-item-action keeps the search history buttons consistent
-            class: "list-group-item list-group-item-action",
-            href: "#"
-        });
-        cityListButton.text(cityName);
-        $(".list-group").append(cityListButton);
-    };
-});
-// listens for action on the history buttons(event)
-$(".list-group-item").click(function () {
-    city = $(this).text();
-    getData();
-});

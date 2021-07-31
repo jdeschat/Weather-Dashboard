@@ -12,56 +12,59 @@
 </head>
 
 <body>
-    <header>
-        <h1>Weather Dashboard</h1>
-    </header>
+    <div class="container-fluid">
+        <header>
+            <h1>Weather Dashboard</h1>
+        </header>
 
 
-    <div class="row">
-        <div class="sidesearch col-4">
-            <!-- Search for a City sidebar -->
-            <div id="response-container mt-2">
-                <label id="searchTitle" for="cityInput">Search for a City:</label>
-                <input type="text" placeholder="Niagara Falls" id="cityInput" name="cityInput"><br>
-                <button id="searchBtn">Search</button>
+        <div class="row">
+            <div class="sidesearch col-md-4">
+                <!-- Search for a City sidebar -->
+                <div class="mt-2" id="response-container">
+                    <label id="searchTitle" for="cityInput">Search for a City:</label>
+                    <input type="text" placeholder="Niagara Falls" id="cityInput" name="cityInput"><br>
+                    <button id="searchBtn">Search</button>
+                </div>
+                <div class="list-group"></div>
+                <!-- Add preset city names -->
+                <div id="presetCities">
+                    <button class="cityNames">Niagara Falls</button><br>
+                    <button class="cityNames">Niagara-on-the-Lake</button><br>
+                    <button class="cityNames">Fonthill</button><br>
+                    <button class="cityNames">Hamilton</button><br>
+                    <button class="cityNames">Toronto</button>
+                </div>
             </div>
-            <div class="list-group"></div>
-            <!-- Add preset city names -->
-            <div id="presetCities">
-                <button class="cityNames">Niagara Falls</button><br>
-                <button class="cityNames">Niagara-on-the-Lake</button><br>
-                <button class="cityNames">Fonthill</button><br>
-                <button class="cityNames">Hamilton</button><br>
-                <button class="cityNames">Toronto</button>
-            </div>
-        </div>
 
 
-        <!-- City temp, wind, humidity, and UV index -->
-        <div class="weatherbox col-8">
-            <div class="row p-2">
-                <div class="card">
-                    <div class="card-body">
-                        <strong class="cityDate">{CITY HERE} {MM/DD/YYYY}</strong>
-                        <br>
-                        <span class="temperature">{X}°C</span>
-                        <br>
-                        <span class="wind">{WIND VALUE} MPH</span>
-                        <br>
-                        <span class="humidity">{HUMIDITY VALUE} %</span>
-                        <br>
-                        <span class="uvIndex">{UV INDEX VALUE}</span>
+            <!-- City temp, wind, humidity, and UV index -->
+            <div class="weatherbox col-md-8">
+                <div class="row p-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="cityDate info">{CITY HERE} {MM/DD/YYYY}</div>
+                            <br>
+                            <span class="temperature info">{X}°C</span>
+                            <br>
+                            <span class="wind info">{WIND VALUE} MPH</span>
+                            <br>
+                            <span class="humidity info">{HUMIDITY VALUE} %</span>
+                            <br>
+                            <span class="uvIndex info">{UV INDEX VALUE}</span>
+                        </div>
+                    </div>
+                    <!-- 5-Day Forecast -->
+                    <div class="row forecast">
+                        <h4>5-Day Forecast:</h2>
                     </div>
                 </div>
-                <!-- 5-Day Forecast -->
-                <div class="row forecast">
-                    <h2>5-Day Forecast:</h2>
-                </div>
+                <div class="fiveDayForecast row"></div>
             </div>
-            <div class="fiveDayForecast row"></div>
-        </div>
 
+        </div>
     </div>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="./assets/js/script.js"></script>
