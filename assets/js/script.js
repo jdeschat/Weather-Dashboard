@@ -1,4 +1,5 @@
 let cityName;
+let saveHistory = [];
 
 var fetchWeather = function (cityName) {
     // console.log(cityName);
@@ -63,7 +64,15 @@ var fiveDayForecast = function (data) {
     for (let i = 0; i < 5; i++) {
         var day = $("<div class='day'><div/>")
         console.log(fiveDayForecast);
-        // $('.fiveDayForecast').append(fiveDayForecast[i]);
+
+        // var myDate = new Date(response.list[i * 8].dt * 1000);
+        // newCard.append($("<h4>").html(myDate.toLocaleDateString()));
+        // var iconCode = response.list[i * 8].weather[0].icon;
+        // var iconURL = "http://openweathermap.org/img/w/" + iconCode + ".png";
+        // newCard.append($("<img>").attr("src", iconURL));
+
+
+        // converts K and removes decimals using Math.round
         $(day).append("<p>Temp: " + data.daily[i].temp.day + " K</p>");
         $(day).append("<p>Wind: " + data.daily[i].wind_speed + "MPH</p>");
         $(day).append("<p>Humidity: " + data.daily[i].humidity + " %</p>");
@@ -73,5 +82,56 @@ var fiveDayForecast = function (data) {
 }
 
 
+
+
+
+
+
+
 // save to local storage
-// localStorage.setItem("cityName", JSON.stringify());
+function getItems() {
+    var storedCities = JSON.parse(localStorage.getItem("saveHistory"));
+    if (storedCities !== null) {
+        saveHistory = storedCities;
+    };
+    // lists up to 10 locations
+    for (i = 0; i < saveHistory.length; i++) {
+        if (i == 10) {
+            break;
+        }
+        //  creates links/buttons
+        cityListButton = $("<a>").attr({
+            class: "list-group-item list-group-item-action",
+            href: "#"
+        });
+        // appends history as a button below the search field
+        cityListButton.text(saveHistory[i]);
+        $(".list-group").append(cityListButton);
+    }
+};
+
+// searches and adds to history(event)
+$("#searchCity").click(function () {
+    cityName = $("#city").val().trim();
+    getData();
+    var checkArray = saveHistory.includes(city);
+    if (checkArray == true) {
+        return
+    }
+    else {
+        saveHistory.push(cityName);
+        localStorage.setItem("saveHistory", JSON.stringify(saveHistory));
+        var cityListButton = $("<a>").attr({
+            // list-group-item-action keeps the search history buttons consistent
+            class: "list-group-item list-group-item-action",
+            href: "#"
+        });
+        cityListButton.text(cityName);
+        $(".list-group").append(cityListButton);
+    };
+});
+// listens for action on the history buttons(event)
+$(".list-group-item").click(function () {
+    city = $(this).text();
+    getData();
+});

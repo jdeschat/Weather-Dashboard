@@ -40,19 +40,26 @@ header {
     width: 300px;
 }
 
-.weatherbox {
+/* .weatherbox {
     border: 2px solid black;
     line-height: 40px;
+} */
+.response-container {
+    margin-bottom: 15px;
 }
 
-.forecast {
+/* .forecast {
     display: flex;
     justify-content: flex-end;
-}
+} */
 
-.fiveDayForecast {
+/* .fiveDayForecast {
     display: flex;
     flex-direction: row;
+} */
+
+.card {
+    width: 100%;
 }
 
 .day {
