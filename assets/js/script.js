@@ -60,7 +60,7 @@ var getCityInfo = function (lat, lon) {
         }).then(function (data) {
             console.log(data);
             // Add the date using moment.js
-            $('.cityDate').text(cityName + " (" + toDateTime(data.current.dt) + ")"); // in the city variable
+            $('.cityDate').html(cityName + " (" + toDateTime(data.current.dt) + ")" + `<img src="https://openweathermap.org/img/w/${data.current.weather[0].icon}.png" />`); // in the city variable
             $('.temperature').text("Temp: " + data.current.temp + " K");
             $('.wind').text("Wind: " + data.current.wind_speed + "MPH");
             $('.humidity').text("Humidity: " + data.current.humidity + " %");
@@ -73,7 +73,7 @@ var getCityInfo = function (lat, lon) {
 var fiveDayForecast = function (data) {
     $('.fiveDayForecast').empty();
     for (let i = 0; i < 5; i++) {
-        var day = $("<div class='day'><div/>")
+        var day = $("<div class='day'><div />")
         console.log(fiveDayForecast);
 
         // var myDate = new Date(response.list[i * 8].dt * 1000);
