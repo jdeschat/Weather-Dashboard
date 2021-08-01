@@ -21,17 +21,17 @@ header {
     padding: 10px;
 }
 
+#searchTitle {
+    font-size: 2em;
+    font-weight: bold;
+    padding: 10px;
+}
+
 .lineBreak {
     border-bottom: 2px solid grey;
     margin-top: 15px;
     margin-bottom: 15px;
     width: 300px;
-}
-
-#searchTitle {
-    font-size: 2em;
-    font-weight: bold;
-    padding: 10px;
 }
 
 .cityNames {
@@ -41,7 +41,6 @@ header {
     background-color: darkgray;
     border-radius: 10px;
 }
-
 
 #response-container {
     margin-bottom: 15px;
@@ -65,7 +64,6 @@ header {
 .weatherbox {
     padding: 15px;
 }
-
 
 .day {
     background-color: rgb(54, 54, 92);

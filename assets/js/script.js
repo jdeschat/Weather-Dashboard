@@ -1,5 +1,6 @@
 let cityName;
 let saveHistory = [];
+let storedCity = [];
 
 var fetchWeather = function (cityName) {
     // console.log(cityName);
@@ -24,11 +25,25 @@ var fetchWeather = function (cityName) {
 // Search button
 var searchButton = document.getElementById("searchBtn");
 searchButton.addEventListener("click", function () {
-    // console.log("search button clicked");
     cityName = $("#cityInput").val();
     fetchWeather(cityName);
 
+    storedCity.push(cityName);
+    console.log(storedCity);
+    $("#presetCities").empty();
+    for (let i = 0; i < storedCity.length; i++) {
+        console.log(storedCity[i]);
+
+        $('.cityNames').html(storedCity[i]);
+        var addCityButtons = document.createElement("button");
+        addCityButtons.setAttribute("name", storedCity[i]);
+        addCityButtons.textContent = storedCity[i];
+        $("#presetCities").append(addCityButtons);
+    }
+
+    localStorage.setItem("#presetCities", JSON.stringify(storedCity));
 })
+
 
 // TODO: get the preset buttons to return weather information
 var presetCityButtons = document.querySelectorAll(".cityNames");
@@ -61,8 +76,8 @@ var getCityInfo = function (lat, lon) {
             console.log(data);
             // Add the date using moment.js
             $('.cityDate').html(cityName + " (" + toDateTime(data.current.dt) + ")" + `<img src="https://openweathermap.org/img/w/${data.current.weather[0].icon}.png" />`); // in the city variable
-            $('.temperature').text("Temp: " + data.current.temp + " K");
-            $('.wind').text("Wind: " + data.current.wind_speed + "MPH");
+            $('.temperature').text("Temp: " + data.current.temp + " °C");
+            $('.wind').text("Wind: " + data.current.wind_speed + " MPH");
             $('.humidity').text("Humidity: " + data.current.humidity + " %");
             $('.uvIndex').html("UV Index: " + `<button class="btn btn-success" id="uvBtn">${data.current.uvi}</button>`);
             fiveDayForecast(data);
@@ -77,8 +92,8 @@ var fiveDayForecast = function (data) {
         console.log(fiveDayForecast);
         $(day).append(toDateTime(data.daily[i].dt));
         $(day).append(`<img src="https://openweathermap.org/img/w/${data.daily[i].weather[0].icon}.png"/>`);
-        $(day).append("<p>Temp: " + data.daily[i].temp.day + " K</p>");
-        $(day).append("<p>Wind: " + data.daily[i].wind_speed + "MPH</p>");
+        $(day).append("<p>Temp: " + data.daily[i].temp.day + " °C</p>");
+        $(day).append("<p>Wind: " + data.daily[i].wind_speed + " MPH</p>");
         $(day).append("<p>Humidity: " + data.daily[i].humidity + " %</p>");
         $('.fiveDayForecast').append(day)
 
@@ -86,5 +101,8 @@ var fiveDayForecast = function (data) {
 }
 
 
-
-// save to local storage
+// save to local storage - Create a search history
+// for (let i = 0; i < getCityInfo.length; i++) {
+//     var storedCity = localStorage.getItem(i);
+//     console.log(storedCity);
+// }
