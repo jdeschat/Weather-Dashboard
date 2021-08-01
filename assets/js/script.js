@@ -1,6 +1,6 @@
 let cityName;
 let saveHistory = [];
-let storedCity = [];
+let storedCity = [JSON.parse(localStorage.getItem("City"))] || [];
 
 var fetchWeather = function (cityName) {
     // console.log(cityName);
@@ -39,6 +39,7 @@ searchButton.addEventListener("click", function () {
         // var addCityButtons = document.querySelector(".cityNames");
         addCityButtons.setAttribute("name", storedCity[i]);
         addCityButtons.textContent = storedCity[i];
+        console.log("storedCity[i]");
         $("#presetCities").append(addCityButtons);
     }
 
