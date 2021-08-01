@@ -34,14 +34,15 @@ searchButton.addEventListener("click", function () {
     for (let i = 0; i < storedCity.length; i++) {
         console.log(storedCity[i]);
 
-        $('.cityNames').html(storedCity[i]);
+        // $('.cityNames').html(storedCity[i]);
         var addCityButtons = document.createElement("button");
+        // var addCityButtons = document.querySelector(".cityNames");
         addCityButtons.setAttribute("name", storedCity[i]);
         addCityButtons.textContent = storedCity[i];
         $("#presetCities").append(addCityButtons);
     }
 
-    localStorage.setItem("#presetCities", JSON.stringify(storedCity));
+    localStorage.setItem("City", JSON.stringify(storedCity));
 })
 
 
@@ -99,10 +100,3 @@ var fiveDayForecast = function (data) {
 
     };
 }
-
-
-// save to local storage - Create a search history
-// for (let i = 0; i < getCityInfo.length; i++) {
-//     var storedCity = localStorage.getItem(i);
-//     console.log(storedCity);
-// }
