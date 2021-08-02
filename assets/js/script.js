@@ -17,7 +17,6 @@ var fetchWeather = function (cityName) {
             }
             // Use 'querySelector' to get the ID of where the Search for a City will be displayed
             var responseContainerEl = document.querySelector("#response-container");
-            // console.log(data)
             getCityInfo(data.city.coord.lat, data.city.coord.lon);
         })
         .catch(err => console.log(err));
@@ -30,20 +29,15 @@ searchButton.addEventListener("click", function () {
     fetchWeather(cityName);
 
     storedCity.push(cityName);
-    // console.log(storedCity);
-    $("#presetCities").empty();
-    for (let i = 0; i < storedCity.length; i++) {
-        // console.log(storedCity[i]);
 
-        // $('.cityNames').html(storedCity[i]);
-        var addCityButtons = document.createElement("button");
-        // var addCityButtons = document.querySelector(".cityNames");
+    for (let i = 0; i < storedCity.length; i++) {
+        var addCityButtons = document.querySelector(".cityNames");
         addCityButtons.setAttribute("name", storedCity[i]);
         addCityButtons.textContent = storedCity[i];
         console.log(storedCity[i]);
-        $("#presetCities").append(addCityButtons);
+        $(".cityNames").append(addCityButtons);
+        // $(".cityNames").empty();
     }
-
     localStorage.setItem("City", JSON.stringify(storedCity));
 })
 
