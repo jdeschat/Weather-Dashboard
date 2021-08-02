@@ -1,7 +1,6 @@
 let cityName;
 let saveHistory = [];
 let storedCity = [];
-// let storedCity = [JSON.parse(localStorage.getItem("City"))] || [];
 
 var fetchWeather = function (cityName) {
     // console.log(cityName);
