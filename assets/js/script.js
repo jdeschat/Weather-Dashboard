@@ -1,6 +1,15 @@
 let cityName;
 let storedCity = JSON.parse(localStorage.getItem("City")) || [];
 
+for (let i = 0; i < storedCity.length; i++) {
+    var addCityButtons = document.createElement("button");
+    addCityButtons.setAttribute("class", "cityNames");
+    addCityButtons.textContent = storedCity[i];
+    console.log(storedCity[i]);
+    $("#presetCities").append(addCityButtons);
+    addWeatherEventListener();
+}
+
 var fetchWeather = function (cityName) {
     let weatherAPI = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=908d66bc443a59edcf38648405a06695";
     fetch(weatherAPI)
@@ -36,16 +45,14 @@ searchButton.addEventListener("click", function () {
     console.log(storedCity);
     storedCity.push(cityName);
 
-    for (let i = 0; i < storedCity.length; i++) {
-        var addCityButtons = document.createElement("button");
-        addCityButtons.setAttribute("class", "cityNames");
-        addCityButtons.textContent = storedCity[i];
-        console.log(storedCity[i]);
-        $("#presetCities").append(addCityButtons);
-    }
+    var addNewButton = document.createElement("button");
+    addNewButton.setAttribute("class", "cityNames");
+    addNewButton.textContent = cityName;
+    $("#presetCities").append(addNewButton);
+
     localStorage.setItem("City", JSON.stringify(storedCity));
     addWeatherEventListener();
-})
+});
 
 // Create a function to get the date
 let toDateTime = function (time) {
