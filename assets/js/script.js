@@ -1,6 +1,6 @@
 let cityName;
-let saveHistory = [];
-let storedCity = [];
+let storedCity = JSON.parse(localStorage.getItem("City")) || [];
+
 
 var fetchWeather = function (cityName) {
     // console.log(cityName);
@@ -21,35 +21,38 @@ var fetchWeather = function (cityName) {
         .catch(err => console.log(err));
 };
 
+// TODO: get the preset buttons to return weather information
+function addWeatherEventListener() {
+    var presetCityButtons = document.querySelectorAll(".cityNames");
+    presetCityButtons.forEach(function (btn) {
+        btn.addEventListener("click", function (e) {
+            // console.log(document.querySelectorAll(".cityNames"));
+            cityName = e.target.innerText;
+            fetchWeather(cityName);
+        });
+    });
+}
+
 // Search button
 var searchButton = document.getElementById("searchBtn");
 searchButton.addEventListener("click", function () {
     cityName = $("#cityInput").val();
     fetchWeather(cityName);
-
+    console.log(storedCity);
     storedCity.push(cityName);
 
     for (let i = 0; i < storedCity.length; i++) {
-        var addCityButtons = document.querySelector(".cityNames");
-        addCityButtons.setAttribute("name", storedCity[i]);
+        var addCityButtons = document.createElement("button");
+        addCityButtons.setAttribute("class", "cityNames");
+        // addCityButtons.setAttribute("name", storedCity[i]);
         addCityButtons.textContent = storedCity[i];
         console.log(storedCity[i]);
-        $(".cityNames").append(addCityButtons);
+        $("#presetCities").append(addCityButtons);
         // $(".cityNames").empty();
     }
     localStorage.setItem("City", JSON.stringify(storedCity));
+    addWeatherEventListener();
 })
-
-
-// TODO: get the preset buttons to return weather information
-var presetCityButtons = document.querySelectorAll(".cityNames");
-presetCityButtons.forEach(function (btn) {
-    btn.addEventListener("click", function (e) {
-        // console.log(document.querySelectorAll(".cityNames"));
-        cityName = e.target.innerText;
-        fetchWeather(cityName);
-    });
-});
 
 // Create a function to get the date
 let toDateTime = function (time) {
@@ -78,7 +81,7 @@ var getCityInfo = function (lat, lon) {
             // $('.uvIndex').html("UV Index: " + `<button class="btn btn-success" id="uvBtn">${data.current.uvi}</button>`);
             $('.uvIndex').html("UV Index: " + `<span class="btnColor">${data.current.uvi}</span>`);
             fiveDayForecast(data);
-            console.log(uvApi);
+
             if (data.current.uvi <= 2) {
                 $(".btnColor").attr("class", "btn btn-success");
             };
