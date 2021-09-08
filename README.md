@@ -69,6 +69,12 @@ Made with [contributors-img](https://contrib.rocks).
 ## Tests
 ![GitHub license](https://img.shields.io/badge/test-100%25-success)
 
+## Technology Used
+- HTML 4
+- CSS
+- JavaScript
+- Bootstrap
+
 ## Questions
 My Github username is jdeschat, which can be accessed here https://github.com/jdeschat/Weather-Dashboard.
 
