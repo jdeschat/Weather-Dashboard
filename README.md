@@ -56,7 +56,7 @@ To install this application, clone the code into your terminal for the respectiv
 4. Click on previously searched cities which are saved in the left hand side of the web page
 
 ## Contributors
-To contribute to Professional-README-generator, clone this repo locally and commit your code on a separate branch.
+To contribute to Weather-Dashboard, clone this repo locally and commit your code on a separate branch.
   
 Contributors:
 
