@@ -70,7 +70,7 @@ Made with [contributors-img](https://contrib.rocks).
 ![GitHub license](https://img.shields.io/badge/test-100%25-success)
 
 ## Technology Used
-- HTML 4
+- HTML 5
 - CSS
 - JavaScript
 - Bootstrap
